@@ -1,0 +1,22 @@
+body{
+font-family:Verdana;
+}
+
+header.siteHeader{
+font-family:"Fredoka One";
+background:orange;
+border-radius:10px;
+color:black;
+}
+
+header.siteHeader h1{
+font-size:20px;
+}
+
+div.purpleBlock{
+background:purple;
+border-radius:10px;
+font-size:13px;
+color:white;
+margin-top:10px;
+}
