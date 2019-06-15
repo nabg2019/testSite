@@ -2,14 +2,149 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<link href="mainstyle.css" rel="stylesheet">
 </head>
+
 <body>
-  <header class="siteHeader">
-    <h1>NABG HTML5 Games Test Site 2019</h1>
-  </header>
-  <div class="purpleBlock">
-    <p>Hello 20190609</p>
-    </div>
+	<canvas id="nabgCanvas" style="width:400px;height:300px;background:#000000"><canvas>
+	<script>
+	//First get a reference to the canvas element in our html doc
+	let canvas = document.getElementById("nabgCanvas");
+	//I am assuming i have the reference and so not checking here
+	//next we create a variable to store the context
+	let ctx = canvas.getContext("2d");
+	
+	//variables related to the ball
+	let ballRadius = 5;
+	//center of the ball
+	let ballX = canvas.width/2;
+	let ballY = canvas.height/2;
+	
+	//increments for ball movement
+	let dx = 2;
+	let dy = 2;
+	
+	
+	//variables related to the paddle
+	let padW = 40;
+	let padH = 5;
+	
+	//coordinated of top left corner
+	let padX = (canvas.width - padW)/2;
+	let padY = canvas.height - padH;
+	
+	//variables to track key state
+	let lKey = false;
+	let rKey = false;
+	
+	//event listeners for right and left arrow keys
+	document.addEventListener("keydown",kdHandler,false);
+	document.addEventListener("keyup",kuHandler,false);
+	
+	//add the handlers
+	function kdHandler(e){
+	if(e.key == "Right" || e.key == "ArrowRight"){
+	rKey = true;
+	}
+	else if(e.key == "Left" || e.key == "ArrowLeft"){
+	lKey = true;
+	}
+	else
+	;
+	}
+	
+	function kuHandler(e){
+		if(e.key == "Right" || e.key == "ArrowRight"){
+	rKey = false;
+	}
+	else if(e.key == "Left" || e.key == "ArrowLeft"){
+	lKey = false;
+
+	}
+	else
+	;
+	}
+	
+	function ballDraw(){
+	ctx.fillStyle = "#efefef";
+	ctx.beginPath();
+	ctx.arc(ballX,ballY,ballRadius,0,Math.PI*2,false);
+	ctx.fill();
+	ctx.closePath();
+	}
+	
+	function padDraw(){
+	ctx.fillStyle = "red";
+	ctx.fillRect(padX,padY,padW,padH);
+	}
+	
+	function gameLoop(){
+	//at the beginning of each frame we clear the background to its origianl color
+	//so in case I put a image background then? will check
+	ctx.clearRect(0,0,canvas.width,canvas.height);
+	//draw the ball with coordinates updated in the last loop
+	ballDraw();
+	
+	//alert(lkey);
+	//update paddle position
+	if(lKey){
+	if(padX - 7 < 0)
+		;
+	else
+		padX -= 7;
+	}
+	else if(rKey){
+	if((padX+padW) + 7 > canvas.width)
+		;
+	else
+		padX += 7;
+	}
+	padDraw();
+	
+	
+	//check for collision with top & bottom, remember we track the center of the ball 
+	//so I am checking collision of the top most and bottom most points
+	/*
+	if(((ballY - ballRadius + dy) < 0) || ((ballY + ballRadius + dy) > canvas.height)){
+		dy = -dy;
+		}
+		*/
+	//only top
+	if(((ballY - ballRadius + dy) < 0)){
+	dy = -dy;
+	}
+	
+
+	if(ballY + ballRadius +dy > canvas.height - padH){
+	if(ballX + dx  > padX &&	ballX + dx < padX + padW){
+	dy = -dy;
+	}
+	else if(ballY + ballRadius + dy > canvas.height){
+	alert("Game Over");
+document.location.reload();
+clearInterval(interval);
+}
+	else
+	;
+	}
+	/*
+	if(((ballY + ballRadius + dy) > canvas.height - padH) && (ballX +dx  > padX || ballX +dx < padX +padW)){
+	dy = -dy;
+	}
+	*/
+	//check for collision with left and right, shoudl i put an else if here?
+	if(((ballX - ballRadius + dx) < 0) || ((ballX + ballRadius + dx) > canvas.width)){
+		dx = -dx;
+		}
+	//check for collision with paddle
+	ballX += dx;
+	ballY += dy;
+	}
+	
+	
+	interval =setInterval(gameLoop,30);
+	
+	</script>
+	
+	</div>
 </body>
 </html>
