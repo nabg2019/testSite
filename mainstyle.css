@@ -1,24 +1,12 @@
 body{
-font-family:Verdana;
+padding:0;
+margin:0;
 }
 
-header.siteHeader{
-font-family:"Fredoka One";
-background:orange;
-border-radius:10px;
-color:black;
-padding:5px;
-}
-
-header.siteHeader h1{
-font-size:20px;
-}
-
-div.purpleBlock{
-background:purple;
-border-radius:10px;
-font-size:13px;
-color:white;
-margin-top:10px;
-padding:5px;
+canvas#nabgCanvas{
+background:#000000;
+display:block;
+margin:10px;
+width:480px;
+height:320px;
 }
