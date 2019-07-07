@@ -3,10 +3,3 @@ padding:0;
 margin:0;
 }
 
-canvas#nabgCanvas{
-background:#000000;
-display:block;
-margin:10px;
-width:480px;
-height:320px;
-}
