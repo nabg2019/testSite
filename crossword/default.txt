@@ -1,0 +1,21 @@
+#title: Web programing
+html: Is the main markup language for displaying web pages
+php: Open source server-side scripting language
+mysql: The world's most used open source relational database
+javascript: Scripting language implemented as part of a web browser
+canvas: HTML5 element that allows rendering of 2D shapes and bitmap images.
+python: Interpreted programming language whose design philosophy emphasizes code readability.
+jquery: JavaScript library designed to simplify the client-side scripting of HTML.
+firefox: Free and open source web browser
+css: style sheet language
+django: Open source web application framework, written in Python.
+github: Web-based hosting service for software development projects.
+chrome: Web browser that uses the WebKit layout engine
+opera: Web browser.
+bug: Error in a program.
+rails: Ruby on ____
+HTTP: Application protocol of the web
+internetExplorer: browser developed by Microsoft
+android: mobile operating system
+wireframe: skeletal framework of a website
+photoshop: graphic editor developed by Adobe
